@@ -37,8 +37,12 @@
     ) // {
       # Overlay for use in other flakes
       overlays.default = final: prev: {
-        beads = self.packages.${prev.system}.beads;
-        claude-code = self.packages.${prev.system}.claude-code;
+        beads = prev.callPackage ./pkgs/beads {
+          inherit (versions.beads) version hashes;
+        };
+        claude-code = prev.callPackage ./pkgs/claude-code {
+          inherit (versions.claude-code) version hashes;
+        };
       };
     };
 }
