@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Check flake
+        run: nix flake check --all-systems
+
+      - name: Build and test beads
+        run: |
+          nix build .#beads --print-build-logs
+          ./result/bin/bd --version
+
+      - name: Build and test claude-code
+        run: |
+          nix build .#claude-code --print-build-logs --impure
+          ./result/bin/claude -v
+        env:
+          NIXPKGS_ALLOW_UNFREE: 1
