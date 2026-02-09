@@ -21,7 +21,9 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Check flake
-        run: nix flake check --all-systems
+        run: nix flake check --all-systems --impure
+        env:
+          NIXPKGS_ALLOW_UNFREE: 1
 
       - name: Build and test beads
         run: |
