@@ -1,0 +1,21 @@
+{
+  "beads": {
+    "version": "0.49.6",
+    "repo": "steveyegge/beads",
+    "hashes": {
+      "x86_64-linux": "sha256-hUbcmkfhHcMawryaAiSpxpCXXpGFCTLLtiYjBT+7fbg=",
+      "aarch64-linux": "sha256-Q9falxQmiyAsHHBdZunKo70SbGWbOVTjFiAwWA1yPhY=",
+      "x86_64-darwin": "sha256-uaeKvFqaAt+VWF0nIlVp8LXh69qc6dqCIW11IQ5jvGI=",
+      "aarch64-darwin": "sha256-AH2s2RnurEijoOy2qtMF7wTpA94CxDqBY9L9amPZq30="
+    }
+  },
+  "claude-code": {
+    "version": "2.1.37",
+    "hashes": {
+      "x86_64-linux": "sha256-+Wek0G4WoyQ2tjKeLb7UWan6TTTwdjWh+ycbdPcGyR8=",
+      "aarch64-linux": "sha256-1yXMcwYPQAp6wDp2mWk5fa7J1BHb1bHHux+mBCe/ZX4=",
+      "x86_64-darwin": "sha256-Wtljm/NK/6RwZvuY8tetew8jYAl0TTCQd7GU2Jb8AR0=",
+      "aarch64-darwin": "sha256-AO0Qr7elYkQHc94xKEVozpwzOF1506kSoSryYq79Ew4="
+    }
+  }
+}
