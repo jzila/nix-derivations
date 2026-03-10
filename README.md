@@ -7,6 +7,8 @@ Personal Nix derivations for bleeding-edge packages.
 | Package | Description |
 |---------|-------------|
 | `claude-code` | Anthropic's agentic coding tool |
+| `nsc` | Namespace CLI - command line interface for Namespace |
+| `devbox` | Namespace devbox - portable development environments |
 | `beads` | Distributed, git-backed graph issue tracker for AI coding agents |
 
 ## Supported Platforms
@@ -41,6 +43,8 @@ Personal Nix derivations for bleeding-edge packages.
       devShells.${system}.default = pkgs.mkShell {
         packages = [
           pkgs.claude-code
+          pkgs.nsc
+          pkgs.devbox
           pkgs.beads
         ];
       };
@@ -65,6 +69,8 @@ Personal Nix derivations for bleeding-edge packages.
       devShells.${system}.default = pkgs.mkShell {
         packages = [
           nix-derivations.packages.${system}.claude-code
+          nix-derivations.packages.${system}.nsc
+          nix-derivations.packages.${system}.devbox
           nix-derivations.packages.${system}.beads
         ];
       };
@@ -96,6 +102,8 @@ allowUnfree: true  # Required for claude-code
 
   packages = [
     pkgs.claude-code
+    pkgs.nsc
+    pkgs.devbox
     pkgs.beads
   ];
 }
@@ -106,6 +114,12 @@ allowUnfree: true  # Required for claude-code
 ```bash
 # Run claude-code directly
 nix run github:jzila/nix-derivations#claude-code
+
+# Run nsc
+nix run github:jzila/nix-derivations#nsc
+
+# Run devbox
+nix run github:jzila/nix-derivations#devbox
 
 # Run beads
 nix run github:jzila/nix-derivations#beads
