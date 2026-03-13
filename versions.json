@@ -30,12 +30,12 @@
     }
   },
   "claude-code": {
-    "version": "2.1.72",
+    "version": "2.1.75",
     "hashes": {
-      "x86_64-linux": "sha256-tVM45/u4v30mi5G6s7KHU2Idq5Y3scypQ2afRJDth40=",
-      "aarch64-linux": "sha256-nwwQy50iLq9OxIcEA6FWGxMp3GaTA2Ezaah3/QWhFwg=",
-      "x86_64-darwin": "sha256-JLn6GD5CJmQPCiFY53cCsN2GDZIFsb7H5pVgmjCciYY=",
-      "aarch64-darwin": "sha256-xYT1E2LVYmlbxxdQ0cIZb5oODjb9BD4rxoPM/Jo6s9c="
+      "x86_64-linux": "sha256-MosKQpwFoE+REVfYhr5RI88YJKGbqMofnVlMAE6sMsk=",
+      "aarch64-linux": "sha256-7I9Pf3u1BhHa5wwQmnbuHaajq0VRHGXxF98hWEjsyQU=",
+      "x86_64-darwin": "sha256-gskLkaChj2AZH4F7m0IwTYsX2+11eVtxXEH0/f5MeC0=",
+      "aarch64-darwin": "sha256-jFQaXpJO2iBw6vFwKkgEevZxxN/2oRpediB2YUoIJnU="
     }
   }
 }
