@@ -38,6 +38,10 @@
             inherit (versions.beads) version hashes;
           };
 
+          gh-dash = pkgs.callPackage ./pkgs/gh-dash {
+            inherit (versions.gh-dash) version hashes;
+          };
+
           claude-code = pkgs.callPackage ./pkgs/claude-code {
             inherit (versions.claude-code) version hashes;
           };
@@ -56,6 +60,9 @@
         };
         beads = prev.callPackage ./pkgs/beads {
           inherit (versions.beads) version hashes;
+        };
+        gh-dash = prev.callPackage ./pkgs/gh-dash {
+          inherit (versions.gh-dash) version hashes;
         };
         claude-code = prev.callPackage ./pkgs/claude-code {
           inherit (versions.claude-code) version hashes;

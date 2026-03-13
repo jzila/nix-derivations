@@ -29,6 +29,16 @@
       "aarch64-darwin": "sha256-AH2s2RnurEijoOy2qtMF7wTpA94CxDqBY9L9amPZq30="
     }
   },
+  "gh-dash": {
+    "version": "4.23.2",
+    "repo": "dlvhdr/gh-dash",
+    "hashes": {
+      "x86_64-linux": "sha256-/tawrpDOLDKsApws6JHNKtGhzdmhLSH7FO0l0Y2uZYs=",
+      "aarch64-linux": "sha256-GQN86O8pl/Kcy6lsgwm0dVSk8TvtJJLDmXru8v26oTY=",
+      "x86_64-darwin": "sha256-6dvDE+xTPS5n1/FRaYAh/O4c9WJ0FKKjwiC2cEH3Tlk=",
+      "aarch64-darwin": "sha256-vwHGdCdhby9+iMYkhY8R4NrTHYSAFLirBoPl902LCDg="
+    }
+  },
   "claude-code": {
     "version": "2.1.75",
     "hashes": {

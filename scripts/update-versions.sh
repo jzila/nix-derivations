@@ -122,6 +122,43 @@ update_beads() {
     echo "Updated beads to $version"
 }
 
+update_gh_dash() {
+    local version="${1:-}"
+
+    if [[ -z "$version" ]]; then
+        echo "Fetching latest gh-dash version..."
+        version=$(curl -s https://api.github.com/repos/dlvhdr/gh-dash/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+    fi
+
+    echo "Updating gh-dash to $version..."
+
+    local checksums
+    checksums=$(curl -sL "https://github.com/dlvhdr/gh-dash/releases/download/v${version}/checksums.txt")
+
+    local x86_64_linux aarch64_linux x86_64_darwin aarch64_darwin
+    x86_64_linux=$(hex_to_sri "$(echo "$checksums" | grep "linux-amd64" | awk '{print $1}')")
+    aarch64_linux=$(hex_to_sri "$(echo "$checksums" | grep "linux-arm64" | awk '{print $1}')")
+    x86_64_darwin=$(hex_to_sri "$(echo "$checksums" | grep "darwin-amd64" | awk '{print $1}')")
+    aarch64_darwin=$(hex_to_sri "$(echo "$checksums" | grep "darwin-arm64" | awk '{print $1}')")
+
+    local tmp
+    tmp=$(mktemp)
+    jq --arg ver "$version" \
+       --arg h1 "$x86_64_linux" \
+       --arg h2 "$aarch64_linux" \
+       --arg h3 "$x86_64_darwin" \
+       --arg h4 "$aarch64_darwin" \
+       '.["gh-dash"].version = $ver |
+        .["gh-dash"].hashes["x86_64-linux"] = $h1 |
+        .["gh-dash"].hashes["aarch64-linux"] = $h2 |
+        .["gh-dash"].hashes["x86_64-darwin"] = $h3 |
+        .["gh-dash"].hashes["aarch64-darwin"] = $h4' \
+       "$VERSIONS_FILE" > "$tmp"
+    mv "$tmp" "$VERSIONS_FILE"
+
+    echo "Updated gh-dash to $version"
+}
+
 update_claude_code() {
     local version="${1:-}"
     local gcs_base="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
@@ -170,6 +207,7 @@ Commands:
   nsc [version]          Update nsc (omit version for latest)
   devbox [version]       Update devbox (omit version for latest)
   beads [version]        Update beads (omit version for latest)
+  gh-dash [version]     Update gh-dash (omit version for latest)
   claude-code [version]  Update claude-code (omit version for latest)
   all                    Update all packages to latest
 
@@ -180,6 +218,8 @@ Examples:
   $0 devbox 0.0.116     # Pin devbox to specific version
   $0 beads              # Update beads to latest
   $0 beads 0.50.0       # Pin beads to specific version
+  $0 gh-dash            # Update gh-dash to latest
+  $0 gh-dash 4.23.2     # Pin gh-dash to specific version
   $0 claude-code        # Update claude-code to latest
   $0 claude-code 2.2.0  # Pin claude-code to specific version
   $0 all                # Update all to latest
@@ -196,6 +236,9 @@ case "${1:-}" in
     beads)
         update_beads "${2:-}"
         ;;
+    gh-dash)
+        update_gh_dash "${2:-}"
+        ;;
     claude-code)
         update_claude_code "${2:-}"
         ;;
@@ -203,7 +246,8 @@ case "${1:-}" in
         update_nsc "${2:-}"
         update_devbox "${3:-}"
         update_beads "${4:-}"
-        update_claude_code "${5:-}"
+        update_gh_dash "${5:-}"
+        update_claude_code "${6:-}"
         ;;
     -h|--help)
         usage
