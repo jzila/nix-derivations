@@ -42,6 +42,10 @@
             inherit (versions.gh-dash) version hashes;
           };
 
+          signoz-mcp-server = pkgs.callPackage ./pkgs/signoz-mcp-server {
+            inherit (versions.signoz-mcp-server) version hashes;
+          };
+
           claude-code = pkgs.callPackage ./pkgs/claude-code {
             inherit (versions.claude-code) version hashes;
           };
@@ -63,6 +67,9 @@
         };
         gh-dash = prev.callPackage ./pkgs/gh-dash {
           inherit (versions.gh-dash) version hashes;
+        };
+        signoz-mcp-server = prev.callPackage ./pkgs/signoz-mcp-server {
+          inherit (versions.signoz-mcp-server) version hashes;
         };
         claude-code = prev.callPackage ./pkgs/claude-code {
           inherit (versions.claude-code) version hashes;

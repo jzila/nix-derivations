@@ -159,6 +159,43 @@ update_gh_dash() {
     echo "Updated gh-dash to $version"
 }
 
+update_signoz_mcp_server() {
+    local version="${1:-}"
+
+    if [[ -z "$version" ]]; then
+        echo "Fetching latest signoz-mcp-server version..."
+        version=$(curl -s https://api.github.com/repos/SigNoz/signoz-mcp-server/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+    fi
+
+    echo "Updating signoz-mcp-server to $version..."
+
+    local checksums
+    checksums=$(curl -sL "https://github.com/SigNoz/signoz-mcp-server/releases/download/v${version}/signoz-mcp-server_${version}_checksums.txt")
+
+    local x86_64_linux aarch64_linux x86_64_darwin aarch64_darwin
+    x86_64_linux=$(hex_to_sri "$(echo "$checksums" | grep "linux_amd64" | awk '{print $1}')")
+    aarch64_linux=$(hex_to_sri "$(echo "$checksums" | grep "linux_arm64" | awk '{print $1}')")
+    x86_64_darwin=$(hex_to_sri "$(echo "$checksums" | grep "darwin_amd64" | awk '{print $1}')")
+    aarch64_darwin=$(hex_to_sri "$(echo "$checksums" | grep "darwin_arm64" | awk '{print $1}')")
+
+    local tmp
+    tmp=$(mktemp)
+    jq --arg ver "$version" \
+       --arg h1 "$x86_64_linux" \
+       --arg h2 "$aarch64_linux" \
+       --arg h3 "$x86_64_darwin" \
+       --arg h4 "$aarch64_darwin" \
+       '.["signoz-mcp-server"].version = $ver |
+        .["signoz-mcp-server"].hashes["x86_64-linux"] = $h1 |
+        .["signoz-mcp-server"].hashes["aarch64-linux"] = $h2 |
+        .["signoz-mcp-server"].hashes["x86_64-darwin"] = $h3 |
+        .["signoz-mcp-server"].hashes["aarch64-darwin"] = $h4' \
+       "$VERSIONS_FILE" > "$tmp"
+    mv "$tmp" "$VERSIONS_FILE"
+
+    echo "Updated signoz-mcp-server to $version"
+}
+
 update_claude_code() {
     local version="${1:-}"
     local gcs_base="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
@@ -208,6 +245,7 @@ Commands:
   devbox [version]       Update devbox (omit version for latest)
   beads [version]        Update beads (omit version for latest)
   gh-dash [version]     Update gh-dash (omit version for latest)
+  signoz-mcp-server [version]  Update signoz-mcp-server (omit version for latest)
   claude-code [version]  Update claude-code (omit version for latest)
   all                    Update all packages to latest
 
@@ -220,6 +258,8 @@ Examples:
   $0 beads 0.50.0       # Pin beads to specific version
   $0 gh-dash            # Update gh-dash to latest
   $0 gh-dash 4.23.2     # Pin gh-dash to specific version
+  $0 signoz-mcp-server  # Update signoz-mcp-server to latest
+  $0 signoz-mcp-server 0.0.5  # Pin signoz-mcp-server to specific version
   $0 claude-code        # Update claude-code to latest
   $0 claude-code 2.2.0  # Pin claude-code to specific version
   $0 all                # Update all to latest
@@ -239,6 +279,9 @@ case "${1:-}" in
     gh-dash)
         update_gh_dash "${2:-}"
         ;;
+    signoz-mcp-server)
+        update_signoz_mcp_server "${2:-}"
+        ;;
     claude-code)
         update_claude_code "${2:-}"
         ;;
@@ -247,7 +290,8 @@ case "${1:-}" in
         update_devbox "${3:-}"
         update_beads "${4:-}"
         update_gh_dash "${5:-}"
-        update_claude_code "${6:-}"
+        update_signoz_mcp_server "${6:-}"
+        update_claude_code "${7:-}"
         ;;
     -h|--help)
         usage

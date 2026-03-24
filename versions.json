@@ -39,6 +39,16 @@
       "aarch64-darwin": "sha256-vwHGdCdhby9+iMYkhY8R4NrTHYSAFLirBoPl902LCDg="
     }
   },
+  "signoz-mcp-server": {
+    "version": "0.0.5",
+    "repo": "SigNoz/signoz-mcp-server",
+    "hashes": {
+      "x86_64-linux": "sha256-N9rCFrwREiVmRTFoICpfvSmFYiiuYoel3vKVI9AQ6VE=",
+      "aarch64-linux": "sha256-0D5YQIgerMuVUHCtoWqOg7Qjr5B+GkjrifzuDx+Ziec=",
+      "x86_64-darwin": "sha256-NMfyaYw46rlAnr0VZmQXbL/Hi8Dma6I4kWkTShiC1Tc=",
+      "aarch64-darwin": "sha256-R4T/FaOr1/v75cnhhh32kj5z4mESlwsiSKDj469p/O8="
+    }
+  },
   "claude-code": {
     "version": "2.1.81",
     "hashes": {
