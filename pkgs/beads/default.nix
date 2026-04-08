@@ -24,7 +24,7 @@ in stdenv.mkDerivation rec {
   inherit version;
 
   src = fetchurl {
-    url = "https://github.com/steveyegge/beads/releases/download/v${version}/${filename}";
+    url = "https://github.com/gastownhall/beads/releases/download/v${version}/${filename}";
     sha256 = hashes.${stdenv.hostPlatform.system};
   };
 
@@ -40,7 +40,7 @@ in stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Distributed, git-backed graph issue tracker for AI coding agents";
-    homepage = "https://github.com/steveyegge/beads";
+    homepage = "https://github.com/gastownhall/beads";
     license = licenses.asl20;
     platforms = builtins.attrNames platformMap;
     mainProgram = "bd";

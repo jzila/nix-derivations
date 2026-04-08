@@ -21,7 +21,7 @@
   },
   "beads": {
     "version": "0.49.6",
-    "repo": "steveyegge/beads",
+    "repo": "gastownhall/beads",
     "hashes": {
       "x86_64-linux": "sha256-hUbcmkfhHcMawryaAiSpxpCXXpGFCTLLtiYjBT+7fbg=",
       "aarch64-linux": "sha256-Q9falxQmiyAsHHBdZunKo70SbGWbOVTjFiAwWA1yPhY=",
