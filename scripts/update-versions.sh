@@ -16,7 +16,7 @@ update_nsc() {
 
     if [[ -z "$version" ]]; then
         echo "Fetching latest nsc version..."
-        version=$(curl -s https://api.github.com/repos/namespacelabs/foundation/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+        version=$(curl -sL https://api.github.com/repos/namespacelabs/foundation/releases/latest | jq -r '.tag_name' | sed 's/^v//')
     fi
 
     echo "Updating nsc to $version..."
@@ -53,7 +53,7 @@ update_devbox() {
 
     if [[ -z "$version" ]]; then
         echo "Fetching latest devbox version..."
-        version=$(curl -s https://api.github.com/repos/namespacelabs/devbox/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+        version=$(curl -sL https://api.github.com/repos/namespacelabs/devbox/releases/latest | jq -r '.tag_name' | sed 's/^v//')
     fi
 
     echo "Updating devbox to $version..."
@@ -90,13 +90,13 @@ update_beads() {
 
     if [[ -z "$version" ]]; then
         echo "Fetching latest beads version..."
-        version=$(curl -s https://api.github.com/repos/steveyegge/beads/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+        version=$(curl -sL https://api.github.com/repos/gastownhall/beads/releases/latest | jq -r '.tag_name' | sed 's/^v//')
     fi
 
     echo "Updating beads to $version..."
 
     local checksums
-    checksums=$(curl -sL "https://github.com/steveyegge/beads/releases/download/v${version}/checksums.txt")
+    checksums=$(curl -sL "https://github.com/gastownhall/beads/releases/download/v${version}/checksums.txt")
 
     local x86_64_linux aarch64_linux x86_64_darwin aarch64_darwin
     x86_64_linux=$(hex_to_sri "$(echo "$checksums" | grep "linux_amd64" | awk '{print $1}')")
@@ -127,7 +127,7 @@ update_gh_dash() {
 
     if [[ -z "$version" ]]; then
         echo "Fetching latest gh-dash version..."
-        version=$(curl -s https://api.github.com/repos/dlvhdr/gh-dash/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+        version=$(curl -sL https://api.github.com/repos/dlvhdr/gh-dash/releases/latest | jq -r '.tag_name' | sed 's/^v//')
     fi
 
     echo "Updating gh-dash to $version..."
@@ -164,7 +164,7 @@ update_signoz_mcp_server() {
 
     if [[ -z "$version" ]]; then
         echo "Fetching latest signoz-mcp-server version..."
-        version=$(curl -s https://api.github.com/repos/SigNoz/signoz-mcp-server/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+        version=$(curl -sL https://api.github.com/repos/SigNoz/signoz-mcp-server/releases/latest | jq -r '.tag_name' | sed 's/^v//')
     fi
 
     echo "Updating signoz-mcp-server to $version..."
