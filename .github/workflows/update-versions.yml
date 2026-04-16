@@ -13,6 +13,9 @@ permissions:
 jobs:
   update-versions:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
+      branch: ${{ steps.create-pr.outputs.branch }}
     steps:
       - uses: actions/checkout@v4
 
@@ -47,6 +50,7 @@ jobs:
           echo "msg=$msg" >> "$GITHUB_OUTPUT"
 
       - name: Create PR with auto-merge
+        id: create-pr
         if: steps.changes.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -75,3 +79,12 @@ jobs:
             --head "$BRANCH")
 
           gh pr merge "$PR_URL" --auto --squash
+
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+  ci:
+    needs: update-versions
+    if: needs.update-versions.outputs.changed == 'true'
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: ${{ needs.update-versions.outputs.branch }}

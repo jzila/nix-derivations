@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to check out'
+        type: string
+        default: ''
 
 jobs:
   build:
@@ -15,6 +21,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || '' }}
 
       - uses: DeterminateSystems/nix-installer-action@main
 
