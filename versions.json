@@ -20,13 +20,13 @@
     }
   },
   "beads": {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "repo": "gastownhall/beads",
     "hashes": {
-      "x86_64-linux": "sha256-ZigLyhRYEhhoQCf+4ACBDC5Aqcb+AOh2/2S9ywGgNsA=",
-      "aarch64-linux": "sha256-97YMI5gwW9sY1OzhyEuHlR5bvNaWb6DWB6wW+dbhGk0=",
-      "x86_64-darwin": "sha256-fZ3je1ROzFXMx5jaZ3gFE0TbqDmDSUOVeULzhBLXoTo=",
-      "aarch64-darwin": "sha256-87J+3U7UPOiqeSg3FF8yTkuKPL+dwMgdFEaC2kYYkDg="
+      "x86_64-linux": "sha256-HvXcqBjX6BV0356fn8KharcR2gmw+nuCKuFi2agciRI=",
+      "aarch64-linux": "sha256-JDqcdQEueUiI/K+5V+diS4/v3+8DPRTNA+vJgxw7wS8=",
+      "x86_64-darwin": "sha256-a9dawFYoil6LuyA3UOla9aRB1a0dIMpVEeYM1sgT5Us=",
+      "aarch64-darwin": "sha256-/m5EZXUfRtnzpnDDz2VnFKFx5EyLwxj+GQVPUTuDBu0="
     }
   },
   "gh-dash": {
