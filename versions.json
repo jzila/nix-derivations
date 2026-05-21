@@ -10,13 +10,13 @@
     }
   },
   "devbox": {
-    "version": "0.0.147",
+    "version": "0.0.150",
     "repo": "namespacelabs/devbox",
     "hashes": {
-      "x86_64-linux": "sha256-q/S3MXPNQGG18Pw27TQJSACAwMnMtR6aCPtFszxrUPo=",
-      "aarch64-linux": "sha256-rZr4FiltLfpoWeBxEKI2IgKvV6nb05skx+XOSj483FQ=",
-      "x86_64-darwin": "sha256-eNp5UYvldgVkKUzaoWyD33orvsmbztisJ8l+nuNuLc8=",
-      "aarch64-darwin": "sha256-eLedn/o0fuqlQIeDrzDqL7JPjX3bhMWPPXoIzvSqw8w="
+      "x86_64-linux": "sha256-msDe4v7DOAkPF1mkAUQwIixxGqxwM+nUycEFJ4oOqEY=",
+      "aarch64-linux": "sha256-5AiFXJBVD0cgWS2FsfJNkgst6TZg7EJVkCwwSVy+1wM=",
+      "x86_64-darwin": "sha256-aLLonCBBrGAnNjcqv+eHLvUIcVS80l17IfswXpxpFk4=",
+      "aarch64-darwin": "sha256-0Iptt8GR4l2ujT0dPsoD1aEjhw3PVOOrktPuKjItd5U="
     }
   },
   "beads": {
@@ -40,13 +40,13 @@
     }
   },
   "signoz-mcp-server": {
-    "version": "0.4.0",
+    "version": "0.4.1",
     "repo": "SigNoz/signoz-mcp-server",
     "hashes": {
-      "x86_64-linux": "sha256-iMrscVthvqvgdMyoKFCnDuZ7pjkPbdIVFeqeSZQdk7Y=",
-      "aarch64-linux": "sha256-DnowoQ4ncr90P4f6DT5Oliv3X9jWxIeGoEMsJc4diiY=",
-      "x86_64-darwin": "sha256-/AuMqMekEJ+WMkNihGdzYjs4BRvAWtax0PkyOcv2B/A=",
-      "aarch64-darwin": "sha256-ODwz1ewcadxFQPaMJRq9Abz25oy6+EO1iHWcCQ3YFrg="
+      "x86_64-linux": "sha256-uCq6CqUiCRYTcPQwzwTWSrILVeZpbfhPtbqAq2pf/cE=",
+      "aarch64-linux": "sha256-P9ZCqjfHl2U7FvzXg910hGI9X6TDygRla51TdWFf05E=",
+      "x86_64-darwin": "sha256-cufMIoovc9R7oTHY/rXxi4SOH0/SahcCB1bMKElShpg=",
+      "aarch64-darwin": "sha256-GWTL5JePWMFCSrBaNjbifg6kduR5bQnuqWjO9j0/oMg="
     }
   },
   "seaweedfs": {
@@ -60,12 +60,12 @@
     }
   },
   "claude-code": {
-    "version": "2.1.145",
+    "version": "2.1.146",
     "hashes": {
-      "x86_64-linux": "sha256-s/+8Emib/oE4nWV3eH/OpMq4G9O2u6m3Gec3cLYtcg4=",
-      "aarch64-linux": "sha256-da1h1pDXlEDIK1hBRE4bQsquVXNq83yX3Q4GjvIM45A=",
-      "x86_64-darwin": "sha256-wj3FZiFCedBwj0ISJh8CPY5j1a9a75Fjjr/cCQs+M94=",
-      "aarch64-darwin": "sha256-No3NlwnIVTT2cwcefMjrVCK8/zZ/ub31ziXZYZqrfvU="
+      "x86_64-linux": "sha256-gl1TATgPH19GbFJo3iWgYpJ75liTj8HWMM+gLFIbgYU=",
+      "aarch64-linux": "sha256-ryUzTHomMqUxs04/TA1pdjuZcUnTHV8NdI5EgTdYgG8=",
+      "x86_64-darwin": "sha256-a8FPReKOpsjDQiDIgye7cqOMX5eLmqRNDLNDdcv3iDc=",
+      "aarch64-darwin": "sha256-sW9GaiIToEzs8a2VggFlUUikn0KVITTmrhgiV8z8CPM="
     }
   }
 }
